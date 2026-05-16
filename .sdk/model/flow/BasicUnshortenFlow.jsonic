@@ -1,0 +1,28 @@
+# BasicUnshortenFlow
+
+main: kit: flow: BasicUnshortenFlow:
+{
+  entity: "unshorten",
+  kind: "basic",
+  name: "BasicUnshortenFlow",
+  step: [
+    {
+      input: {
+        ref: "unshorten_ref01",
+        srcdatavar: "unshorten_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-unshorten_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUnshortenFlow"
+}

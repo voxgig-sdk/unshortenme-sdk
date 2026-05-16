@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "unshorten": {
+      "UNSHORTEN00": {
+        "shortened_url": "s1e",
+        "success": false,
+        "unshortened_url": "s20"
+      },
+      "UNSHORTEN01": {
+        "shortened_url": "s3c",
+        "success": false,
+        "unshortened_url": "s3e"
+      },
+      "UNSHORTEN02": {
+        "shortened_url": "s5a",
+        "success": false,
+        "unshortened_url": "s5c"
+      }
+    }
+  },
+  "new": {
+    "unshorten": {
+      "unshorten_ref01": {
+        "shortened_url": "s78",
+        "success": false,
+        "unshortened_url": "s7a"
+      }
+    }
+  }
+}

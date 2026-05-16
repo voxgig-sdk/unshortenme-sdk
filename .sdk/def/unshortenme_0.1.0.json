@@ -1,0 +1,229 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Unshorten.me API",
+    "description": "Provides an easy method to unshorten a wide range of shortened URLs with rate limit and authorization header. Returns unshortened URL and success status.",
+    "version": "2.0.0",
+    "contact": {
+      "email": "contact@unshorten.me"
+    },
+    "termsOfService": "https://unshorten.me/privacy-policy"
+  },
+  "servers": [
+    {
+      "url": "https://unshorten.me/api/v2",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/unshorten": {
+      "get": {
+        "summary": "Unshorten a URL",
+        "description": "Unshortens a wide range of shortened URLs. The API is rate-limited based on subscription level. If the URL has been previously unshortened, the result is retrieved from the database.",
+        "operationId": "unshortenUrl",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The shortened URL to be unshortened",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://bit.ly/3DKWm5t"
+            }
+          }
+        ],
+        "security": [
+          {
+            "TokenAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully unshortened the URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "unshortened_url": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "The full unshortened URL",
+                      "example": "https://www.youtube.com/"
+                    },
+                    "shortened_url": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "The original shortened URL that was provided",
+                      "example": "https://bit.ly/3DKWm5t"
+                    },
+                    "success": {
+                      "type": "boolean",
+                      "description": "Indicates whether the unshortening operation was successful",
+                      "example": true
+                    }
+                  },
+                  "required": [
+                    "unshortened_url",
+                    "shortened_url",
+                    "success"
+                  ]
+                },
+                "examples": {
+                  "successfulUnshorten": {
+                    "summary": "Successful unshorten response",
+                    "value": {
+                      "unshortened_url": "https://www.youtube.com/",
+                      "shortened_url": "https://bit.ly/3DKWm5t",
+                      "success": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid URL parameter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Invalid URL parameter"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - invalid or missing authorization token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Invalid or missing authorization token"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Rate limit exceeded. Please upgrade your subscription or contact us."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "An error occurred while processing your request"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "TokenAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "Token-based authentication. Use the format: 'Token {your_token}' where the token can be found in your profile page."
+      }
+    },
+    "schemas": {
+      "UnshortenResponse": {
+        "type": "object",
+        "properties": {
+          "unshortened_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The full unshortened URL"
+          },
+          "shortened_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The original shortened URL that was provided"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the unshortening operation was successful"
+          }
+        },
+        "required": [
+          "unshortened_url",
+          "shortened_url",
+          "success"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Always false for error responses"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error message describing what went wrong"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "TokenAuth": []
+    }
+  ],
+  "externalDocs": {
+    "description": "Official API Documentation",
+    "url": "https://unshorten.me/api"
+  }
+}

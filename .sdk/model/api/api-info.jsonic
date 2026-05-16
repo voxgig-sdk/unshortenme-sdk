@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "contact@unshorten.me"
+      }
+      description: "Provides an easy method to unshorten a wide range of shortened URLs with rate limit and authorization header. Returns unshortened URL and success status."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://unshorten.me/api/v2"
+        }
+      ]
+      termsOfService: "https://unshorten.me/privacy-policy"
+      title: "Unshorten.me API"
+      version: "2.0.0"
+    }
+  }
+}
+
+}

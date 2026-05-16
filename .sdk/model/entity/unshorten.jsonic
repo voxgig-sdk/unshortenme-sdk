@@ -1,0 +1,64 @@
+# Entity: unshorten
+
+main: kit: entity: unshorten: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "shortened_url"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "success"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "unshortened_url"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "unshorten"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "https://bit.ly/3DKWm5t"
+                kind: "query"
+                name: "url"
+                orig: "url"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/unshorten"
+          parts: [
+            "unshorten"
+          ]
+          select: {
+            exist: [
+              "url"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
