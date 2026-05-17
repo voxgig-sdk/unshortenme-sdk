@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/unshortenme-sdk"
-	"github.com/voxgig-sdk/unshortenme-sdk/core"
+	sdk "github.com/voxgig-sdk/unshortenme-sdk/go"
+	"github.com/voxgig-sdk/unshortenme-sdk/go/core"
 )
 
 func TestUnshortenDirect(t *testing.T) {

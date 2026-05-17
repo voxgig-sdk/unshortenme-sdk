@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/unshortenme-sdk"
-	"github.com/voxgig-sdk/unshortenme-sdk/core"
+	sdk "github.com/voxgig-sdk/unshortenme-sdk/go"
+	"github.com/voxgig-sdk/unshortenme-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/unshortenme-sdk/go/utility/struct"
 )
 
 func TestUnshortenEntity(t *testing.T) {

@@ -1,10 +1,10 @@
 package voxgigunshortenmesdk
 
 import (
-	"github.com/voxgig-sdk/unshortenme-sdk/core"
-	"github.com/voxgig-sdk/unshortenme-sdk/entity"
-	"github.com/voxgig-sdk/unshortenme-sdk/feature"
-	_ "github.com/voxgig-sdk/unshortenme-sdk/utility"
+	"github.com/voxgig-sdk/unshortenme-sdk/go/core"
+	"github.com/voxgig-sdk/unshortenme-sdk/go/entity"
+	"github.com/voxgig-sdk/unshortenme-sdk/go/feature"
+	_ "github.com/voxgig-sdk/unshortenme-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
