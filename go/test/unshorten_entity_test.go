@@ -117,7 +117,6 @@ func unshortenBasicSetup(extra map[string]any) *entityTestSetup {
 		"UNSHORTENME_TEST_UNSHORTEN_ENTID": idmap,
 		"UNSHORTENME_TEST_LIVE":      "FALSE",
 		"UNSHORTENME_TEST_EXPLAIN":   "FALSE",
-		"UNSHORTENME_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["UNSHORTENME_TEST_UNSHORTEN_ENTID"])
@@ -128,7 +127,6 @@ func unshortenBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["UNSHORTENME_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["UNSHORTENME_APIKEY"],
 			},
 			extra,
 		})

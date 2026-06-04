@@ -105,14 +105,12 @@ func unshortenDirectSetup(mockres any) *unshortenDirectSetupResult {
 	env := envOverride(map[string]any{
 		"UNSHORTENME_TEST_UNSHORTEN_ENTID": map[string]any{},
 		"UNSHORTENME_TEST_LIVE":    "FALSE",
-		"UNSHORTENME_APIKEY":       "NONE",
 	})
 
 	live := env["UNSHORTENME_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["UNSHORTENME_APIKEY"],
 		}
 		client := sdk.NewUnshortenmeSDK(mergedOpts)
 

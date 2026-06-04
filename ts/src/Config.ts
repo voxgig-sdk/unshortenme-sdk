@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://unshorten.me/api/v2',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

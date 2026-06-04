@@ -91,7 +91,6 @@ function unshorten_basic_setup(extra)
     ["UNSHORTENME_TEST_UNSHORTEN_ENTID"] = idmap,
     ["UNSHORTENME_TEST_LIVE"] = "FALSE",
     ["UNSHORTENME_TEST_EXPLAIN"] = "FALSE",
-    ["UNSHORTENME_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ function unshorten_basic_setup(extra)
   if env["UNSHORTENME_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["UNSHORTENME_APIKEY"],
       },
       extra or {},
     })

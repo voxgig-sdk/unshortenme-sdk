@@ -78,14 +78,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'UNSHORTENME_TEST_UNSHORTEN_ENTID': {},
     'UNSHORTENME_TEST_LIVE': 'FALSE',
-    'UNSHORTENME_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.UNSHORTENME_TEST_LIVE
 
   if (live) {
     const client = new UnshortenmeSDK({
-      apikey: env.UNSHORTENME_APIKEY,
     })
 
     let idmap: any = env['UNSHORTENME_TEST_UNSHORTEN_ENTID']

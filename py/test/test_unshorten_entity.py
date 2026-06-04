@@ -91,7 +91,6 @@ def _unshorten_basic_setup(extra):
         "UNSHORTENME_TEST_UNSHORTEN_ENTID": idmap,
         "UNSHORTENME_TEST_LIVE": "FALSE",
         "UNSHORTENME_TEST_EXPLAIN": "FALSE",
-        "UNSHORTENME_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _unshorten_basic_setup(extra):
     if env.get("UNSHORTENME_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("UNSHORTENME_APIKEY"),
             },
             extra or {},
         ])
