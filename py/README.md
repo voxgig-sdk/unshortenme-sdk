@@ -10,7 +10,7 @@ The Python SDK for the Unshortenme API — an entity-oriented client following P
 
 ## Install
 ```bash
-pip install unshortenme-sdk
+pip install voxgig-sdk-unshortenme
 ```
 
 Or install from source:

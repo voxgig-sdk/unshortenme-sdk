@@ -10,13 +10,13 @@ The Ruby SDK for the Unshortenme API — an entity-oriented client using idiomat
 
 ## Install
 ```bash
-gem install unshortenme-sdk
+gem install voxgig-sdk-unshortenme
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "unshortenme-sdk"
+gem "voxgig-sdk-unshortenme"
 ```
 
 Then run:

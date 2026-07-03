@@ -10,7 +10,7 @@ The PHP SDK for the Unshortenme API — an entity-oriented client using PHP conv
 
 ## Install
 ```bash
-composer require voxgig/unshortenme-sdk
+composer require voxgig-sdk/unshortenme
 ```
 
 

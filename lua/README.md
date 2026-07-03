@@ -10,7 +10,7 @@ The Lua SDK for the Unshortenme API — an entity-oriented client using Lua conv
 
 ## Install
 ```bash
-luarocks install unshortenme-sdk
+luarocks install voxgig-sdk-unshortenme
 ```
 
 If the module is not yet published, add the source directory to

@@ -10,7 +10,7 @@ The TypeScript SDK for the Unshortenme API — a type-safe, entity-oriented clie
 
 ## Install
 ```bash
-npm install unshortenme
+npm install @voxgig-sdk/unshortenme
 ```
 ## Tutorial: your first API call
 
