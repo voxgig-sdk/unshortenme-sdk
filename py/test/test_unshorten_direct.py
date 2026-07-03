@@ -64,12 +64,14 @@ def _unshorten_direct_setup(mockres):
     env = runner.env_override({
         "UNSHORTENME_TEST_UNSHORTEN_ENTID": {},
         "UNSHORTENME_TEST_LIVE": "FALSE",
+        "UNSHORTENME_APIKEY": "NONE",
     })
 
     live = env.get("UNSHORTENME_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("UNSHORTENME_APIKEY"),
         }
         client = UnshortenmeSDK(merged_opts)
         return {

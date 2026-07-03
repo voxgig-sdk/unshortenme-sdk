@@ -68,12 +68,14 @@ function unshorten_direct_setup(mockres)
   local env = runner.env_override({
     ["UNSHORTENME_TEST_UNSHORTEN_ENTID"] = {},
     ["UNSHORTENME_TEST_LIVE"] = "FALSE",
+    ["UNSHORTENME_APIKEY"] = "NONE",
   })
 
   local live = env["UNSHORTENME_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["UNSHORTENME_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://unshorten.me/api/v2',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -55,43 +59,45 @@ class Config {
     "unshorten": {
       "fields": [
         {
+          "active": true,
           "name": "shortened_url",
           "req": true,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "success",
           "req": true,
           "type": "`$BOOLEAN`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "unshortened_url",
           "req": true,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         }
       ],
       "name": "unshorten",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "https://bit.ly/3DKWm5t",
                     "kind": "query",
                     "name": "url",
                     "orig": "url",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -109,11 +115,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },

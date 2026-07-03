@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'UNSHORTENME_TEST_UNSHORTEN_ENTID': idmap,
     'UNSHORTENME_TEST_LIVE': 'FALSE',
     'UNSHORTENME_TEST_EXPLAIN': 'FALSE',
+    'UNSHORTENME_APIKEY': 'NONE',
   })
 
   idmap = env['UNSHORTENME_TEST_UNSHORTEN_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new UnshortenmeSDK(merge([
       {
+        apikey: env.UNSHORTENME_APIKEY,
       },
       extra
     ]))

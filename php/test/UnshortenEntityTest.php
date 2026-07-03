@@ -85,6 +85,7 @@ function unshorten_basic_setup($extra)
         "UNSHORTENME_TEST_UNSHORTEN_ENTID" => $idmap,
         "UNSHORTENME_TEST_LIVE" => "FALSE",
         "UNSHORTENME_TEST_EXPLAIN" => "FALSE",
+        "UNSHORTENME_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function unshorten_basic_setup($extra)
     if ($env["UNSHORTENME_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["UNSHORTENME_APIKEY"],
             ],
             $extra ?? [],
         ]);

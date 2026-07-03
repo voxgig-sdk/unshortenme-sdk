@@ -17,26 +17,7 @@ main: {
       termsOfService: "https://unshorten.me/privacy-policy"
       title: "Unshorten.me API"
       version: "2.0.0"
-      tagline: "Expand shortened URLs back to their original destinations via a simple authenticated JSON endpoint"
-      homepage: "https://unshorten.me/"
-      docs_url: "https://unshorten.me/api"
-      license_short: "Proprietary service; usage governed by unshorten.me terms and privacy policy"
-      license_md: `- Operated by unshorten.me (copyright 2016 onwards)
-- No open-source licence is published for the API itself
-- Use is subject to the site's terms and privacy policy
-- Higher-volume use requires contacting the operator`
-      about_md: `Unshorten.me is a URL-expansion service operated by [unshorten.me](https://unshorten.me/) that takes a shortened link (for example from goo.gl, bit.ly and similar shorteners) and returns the underlying long URL. The v2 API exposes a single JSON endpoint suitable for programmatic resolution of links.
-
-What you get from the API:
-- Resolve a shortened URL to its original destination via \`GET /api/v2/unshorten?url={short_url}\`
-- A JSON response containing \`unshortened_url\`, \`shortened_url\`, and a boolean \`success\` field
-- Caching of previously resolved URLs so repeat lookups are fast
-
-Operational notes: requests require an \`Authorization: Token {token}\` header tied to an account profile. Rate limits apply per hour to fresh resolutions and vary by subscription tier; previously cached results do not count against the limit. CORS is disabled, so the API is intended for server-side use.`
-      entity_desc: {
-        unshorten: "URL-expansion resource that resolves a shortened link to its original destination; backed by `GET /api/v2/unshorten?url={short_url}`."
-      }
-      auth: false
     }
   }
 }
+

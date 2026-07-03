@@ -1,19 +1,8 @@
 # Unshortenme SDK
 
-Expand shortened URLs back to their original destinations via a simple authenticated JSON endpoint
+Unshorten.me API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Unshorten.me API
-
-Unshorten.me is a URL-expansion service operated by [unshorten.me](https://unshorten.me/) that takes a shortened link (for example from goo.gl, bit.ly and similar shorteners) and returns the underlying long URL. The v2 API exposes a single JSON endpoint suitable for programmatic resolution of links.
-
-What you get from the API:
-- Resolve a shortened URL to its original destination via `GET /api/v2/unshorten?url={short_url}`
-- A JSON response containing `unshortened_url`, `shortened_url`, and a boolean `success` field
-- Caching of previously resolved URLs so repeat lookups are fast
-
-Operational notes: requests require an `Authorization: Token {token}` header tied to an account profile. Rate limits apply per hour to fresh resolutions and vary by subscription tier; previously cached results do not count against the limit. CORS is disabled, so the API is intended for server-side use.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install unshortenme-sdk
 luarocks install unshortenme-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { UnshortenmeSDK } from 'unshortenme'
 
-const client = new UnshortenmeSDK({})
+const client = new UnshortenmeSDK({
+  apikey: process.env.UNSHORTENME_APIKEY,
+})
 
+// Load unshorten data
+const unshorten = await client.Unshorten().load({})
+console.log(unshorten.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Unshorten** | URL-expansion resource that resolves a shortened link to its original destination; backed by `GET /api/v2/unshorten?url={short_url}`. | `/unshorten` |
+| **Unshorten** |  | `/unshorten` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -107,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from unshortenme_sdk import UnshortenmeSDK
 
-client = UnshortenmeSDK({})
+client = UnshortenmeSDK({
+    "apikey": os.environ.get("UNSHORTENME_APIKEY"),
+})
 
 
 # Load a specific unshorten
-unshorten, err = client.Unshorten(None).load(
-    {"id": "example_id"}, None
-)
+unshorten, err = client.Unshorten().load({"id": "example_id"})
+print(unshorten)
 ```
 
 ### PHP
@@ -124,13 +119,14 @@ unshorten, err = client.Unshorten(None).load(
 <?php
 require_once 'unshortenme_sdk.php';
 
-$client = new UnshortenmeSDK([]);
+$client = new UnshortenmeSDK([
+    "apikey" => getenv("UNSHORTENME_APIKEY"),
+]);
 
 
 // Load a specific unshorten
-[$unshorten, $err] = $client->Unshorten(null)->load(
-    ["id" => "example_id"], null
-);
+[$unshorten, $err] = $client->Unshorten()->load(["id" => "example_id"]);
+print_r($unshorten);
 ```
 
 ### Golang
@@ -138,8 +134,13 @@ $client = new UnshortenmeSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/unshortenme-sdk/go"
 
-client := sdk.NewUnshortenmeSDK(map[string]any{})
+client := sdk.NewUnshortenmeSDK(map[string]any{
+    "apikey": os.Getenv("UNSHORTENME_APIKEY"),
+})
 
+// Load unshorten data
+unshorten, err := client.Unshorten(nil).Load(map[string]any{}, nil)
+fmt.Println(unshorten)
 ```
 
 ### Ruby
@@ -147,13 +148,14 @@ client := sdk.NewUnshortenmeSDK(map[string]any{})
 ```ruby
 require_relative "Unshortenme_sdk"
 
-client = UnshortenmeSDK.new({})
+client = UnshortenmeSDK.new({
+  "apikey" => ENV["UNSHORTENME_APIKEY"],
+})
 
 
 # Load a specific unshorten
-unshorten, err = client.Unshorten(nil).load(
-  { "id" => "example_id" }, nil
-)
+unshorten, err = client.Unshorten().load({ "id" => "example_id" })
+puts unshorten
 ```
 
 ### Lua
@@ -161,13 +163,14 @@ unshorten, err = client.Unshorten(nil).load(
 ```lua
 local sdk = require("unshortenme_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("UNSHORTENME_APIKEY"),
+})
 
 
 -- Load a specific unshorten
-local unshorten, err = client:Unshorten(nil):load(
-  { id = "example_id" }, nil
-)
+local unshorten, err = client:Unshorten():load({ id = "example_id" })
+print(unshorten)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +189,21 @@ const result = await client.Unshorten().load({ id: 'test01' })
 ### Python
 
 ```python
-client = UnshortenmeSDK.test(None, None)
-result, err = client.Unshorten(None).load(
-    {"id": "test01"}, None
-)
+client = UnshortenmeSDK.test()
+result, err = client.Unshorten().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = UnshortenmeSDK::test(null, null);
-[$result, $err] = $client->Unshorten(null)->load(
-    ["id" => "test01"], null
-);
+$client = UnshortenmeSDK::test();
+[$result, $err] = $client->Unshorten()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Unshorten(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +212,15 @@ result, err := client.Unshorten(nil).Load(
 ### Ruby
 
 ```ruby
-client = UnshortenmeSDK.test(nil, nil)
-result, err = client.Unshorten(nil).load(
-  { "id" => "test01" }, nil
-)
+client = UnshortenmeSDK.test
+result, err = client.Unshorten().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Unshorten(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Unshorten():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,16 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Unshorten.me API
-
-- Upstream: [https://unshorten.me/](https://unshorten.me/)
-- API docs: [https://unshorten.me/api](https://unshorten.me/api)
-
-- Operated by unshorten.me (copyright 2016 onwards)
-- No open-source licence is published for the API itself
-- Use is subject to the site's terms and privacy policy
-- Higher-volume use requires contacting the operator
 
 ---
 

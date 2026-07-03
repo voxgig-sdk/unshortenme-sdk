@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://unshorten.me/api/v2",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,43 +29,45 @@ def make_config():
       "unshorten": {
         "fields": [
           {
+            "active": True,
             "name": "shortened_url",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "success",
             "req": True,
             "type": "`$BOOLEAN`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "unshortened_url",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
         ],
         "name": "unshorten",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": "https://bit.ly/3DKWm5t",
                       "kind": "query",
                       "name": "url",
                       "orig": "url",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -80,11 +85,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
