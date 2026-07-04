@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Unshorten,
+  UnshortenLoadMatch,
+} from '../UnshortenmeTypes'
 
 // TODO: needs Entity superclass
-class UnshortenEntity extends UnshortenmeEntityBase {
+class UnshortenEntity extends UnshortenmeEntityBase<Unshorten> {
 
   constructor(client: UnshortenmeSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class UnshortenEntity extends UnshortenmeEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: UnshortenLoadMatch, ctrl?: Control): Promise<Unshorten> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class UnshortenEntity extends UnshortenmeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Unshorten> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

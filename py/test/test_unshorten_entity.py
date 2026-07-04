@@ -49,8 +49,7 @@ class TestUnshortenEntity:
         # LOAD
         unshorten_ref01_ent = client.Unshorten(None)
         unshorten_ref01_match_dt0 = {}
-        unshorten_ref01_data_dt0_loaded, err = unshorten_ref01_ent.load(unshorten_ref01_match_dt0, None)
-        assert err is None
+        unshorten_ref01_data_dt0_loaded = unshorten_ref01_ent.load(unshorten_ref01_match_dt0, None)
         assert unshorten_ref01_data_dt0_loaded is not None
 
 

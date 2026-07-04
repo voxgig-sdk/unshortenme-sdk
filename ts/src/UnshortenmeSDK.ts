@@ -2,6 +2,8 @@
 
 import { UnshortenEntity } from './entity/UnshortenEntity'
 
+export type * from './UnshortenmeTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class UnshortenmeSDK {
 
 
 
+  _unshorten?: UnshortenEntity
+
+  // Idiomatic facade: `client.unshorten.list()` / `client.unshorten.load({ id })`.
+  get unshorten(): UnshortenEntity {
+    return (this._unshorten ??= new UnshortenEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.unshorten` instead. */
   Unshorten(data?: any) {
     const self = this
     return new UnshortenEntity(self,data)

@@ -49,8 +49,7 @@ class UnshortenEntityTest extends TestCase
         // LOAD
         $unshorten_ref01_ent = $client->Unshorten(null);
         $unshorten_ref01_match_dt0 = [];
-        [$unshorten_ref01_data_dt0_loaded, $err] = $unshorten_ref01_ent->load($unshorten_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $unshorten_ref01_data_dt0_loaded = $unshorten_ref01_ent->load($unshorten_ref01_match_dt0, null);
         $this->assertNotNull($unshorten_ref01_data_dt0_loaded);
 
     }

@@ -245,6 +245,9 @@ func (sdk *UnshortenmeSDK) Direct(fetchargs map[string]any) (map[string]any, err
 }
 
 
+// Unshorten returns a Unshorten entity bound to this client.
+// Idiomatic usage: client.Unshorten(nil).List(nil, nil) or
+// client.Unshorten(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UnshortenmeSDK) Unshorten(data map[string]any) UnshortenmeEntity {
 	return NewUnshortenEntityFunc(sdk, data)
 }

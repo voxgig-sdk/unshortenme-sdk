@@ -42,8 +42,7 @@ class UnshortenEntityTest < Minitest::Test
     # LOAD
     unshorten_ref01_ent = client.Unshorten(nil)
     unshorten_ref01_match_dt0 = {}
-    unshorten_ref01_data_dt0_loaded, err = unshorten_ref01_ent.load(unshorten_ref01_match_dt0, nil)
-    assert_nil err
+    unshorten_ref01_data_dt0_loaded = unshorten_ref01_ent.load(unshorten_ref01_match_dt0, nil)
     assert !unshorten_ref01_data_dt0_loaded.nil?
 
   end

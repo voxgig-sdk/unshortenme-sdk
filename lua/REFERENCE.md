@@ -84,7 +84,7 @@ same parameters as `direct()`.
 ## UnshortenEntity
 
 ```lua
-local unshorten = client:Unshorten(nil)
+local unshorten = client:unshorten(nil)
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ local unshorten = client:Unshorten(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Unshorten():load({ id = "unshorten_id" })
+local result, err = client:unshorten():load({ id = "unshorten_id" })
 ```
 
 ### Common Methods

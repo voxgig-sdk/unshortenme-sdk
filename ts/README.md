@@ -9,9 +9,12 @@ The TypeScript SDK for the Unshortenme API — a type-safe, entity-oriented clie
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/unshortenme
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/unshortenme-sdk/releases](https://github.com/voxgig-sdk/unshortenme-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { UnshortenmeSDK } from 'unshortenme'
+import { UnshortenmeSDK } from '@voxgig-sdk/unshortenme'
 
 const client = new UnshortenmeSDK({
   apikey: process.env.UNSHORTENME_APIKEY,
 })
 ```
 
-### 3. Load a unshorten
+### 3. Load an unshorten
 
 ```ts
-const result = await client.Unshorten().load({ id: 'example_id' })
+const result = await client.unshorten.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = UnshortenmeSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.unshorten.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -96,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.unshorten
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -268,7 +271,7 @@ API path: `/unshorten`
 
 ### Unshorten
 
-Create an instance: `const unshorten = client.Unshorten()`
+Create an instance: `const unshorten = client.unshorten`
 
 #### Operations
 
@@ -287,7 +290,7 @@ Create an instance: `const unshorten = client.Unshorten()`
 #### Example: Load
 
 ```ts
-const unshorten = await client.Unshorten().load({ id: 'unshorten_id' })
+const unshorten = await client.unshorten.load({ id: 'unshorten_id' })
 ```
 
 
@@ -348,7 +351,7 @@ unshortenme/
 Import the SDK from the package root:
 
 ```ts
-import { UnshortenmeSDK } from 'unshortenme'
+import { UnshortenmeSDK } from '@voxgig-sdk/unshortenme'
 ```
 
 ### Entity state
@@ -358,11 +361,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const unshorten = client.unshorten
+await unshorten.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// unshorten.data() now returns the loaded unshorten data
+// unshorten.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration
