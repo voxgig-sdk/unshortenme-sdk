@@ -110,7 +110,7 @@ Alias for `UnshortenmeSDK.test()`.
 ## UnshortenEntity
 
 ```ts
-const unshorten = client.unshorten
+const unshorten = client.Unshorten()
 ```
 
 ### Fields
@@ -128,7 +128,7 @@ const unshorten = client.unshorten
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.unshorten.load({ id: 'unshorten_id' })
+const result = await client.Unshorten().load({ id: 'unshorten_id' })
 ```
 
 ### Common Methods

@@ -86,7 +86,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## UnshortenEntity
 
 ```php
-$unshorten = $client->unshorten();
+$unshorten = $client->Unshorten();
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ $unshorten = $client->unshorten();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->unshorten()->load(["id" => "unshorten_id"]);
+$result = $client->Unshorten()->load(["id" => "unshorten_id"]);
 ```
 
 ### Common Methods

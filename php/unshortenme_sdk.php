@@ -233,10 +233,10 @@ class UnshortenmeSDK
 
     private $_unshorten = null;
 
-    // Idiomatic facade: $client->unshorten()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Unshorten() (PHP method
-    // names are case-insensitive).
-    public function unshorten($data = null)
+    // Canonical facade: $client->Unshorten()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->unshorten()
+    // resolves here too.
+    public function Unshorten($data = null)
     {
         require_once __DIR__ . '/entity/unshorten_entity.php';
         if ($data === null) {

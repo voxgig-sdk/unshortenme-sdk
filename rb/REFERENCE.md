@@ -87,7 +87,7 @@ same parameters as `direct()`. Raises on error.
 ## UnshortenEntity
 
 ```ruby
-unshorten = client.unshorten
+unshorten = client.Unshorten
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ unshorten = client.unshorten
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.unshorten.load({ "id" => "unshorten_id" })
+result = client.Unshorten.load({ "id" => "unshorten_id" })
 ```
 
 ### Common Methods

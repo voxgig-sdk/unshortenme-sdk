@@ -28,9 +28,9 @@ const client = new UnshortenmeSDK({
   apikey: process.env.UNSHORTENME_APIKEY,
 })
 
-// Load unshorten data
-const unshorten = await client.unshorten.load({})
-console.log(unshorten.data)
+// Load unshorten data (returns a Unshorten)
+const unshorten = await client.Unshorten().load()
+console.log(unshorten)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -89,8 +89,8 @@ client = UnshortenmeSDK({
 })
 
 
-# Load a specific unshorten
-unshorten = client.unshorten.load({"id": "example_id"})
+# Load a specific unshorten (returns the record, raises on error)
+unshorten = client.Unshorten().load({"id": "example_id"})
 print(unshorten)
 ```
 
@@ -105,8 +105,8 @@ $client = new UnshortenmeSDK([
 ]);
 
 
-// Load a specific unshorten
-$unshorten = $client->unshorten()->load(["id" => "example_id"]);
+// Load a specific unshorten (returns the bare record; throws on error)
+$unshorten = $client->Unshorten()->load(["id" => "example_id"]);
 print_r($unshorten);
 ```
 
@@ -134,8 +134,8 @@ client = UnshortenmeSDK.new({
 })
 
 
-# Load a specific unshorten
-unshorten = client.unshorten.load({ "id" => "example_id" })
+# Load a specific unshorten (returns the bare record; raises on error)
+unshorten = client.Unshorten.load({ "id" => "example_id" })
 puts unshorten
 ```
 
@@ -150,7 +150,7 @@ local client = sdk.new({
 
 
 -- Load a specific unshorten
-local unshorten, err = client:unshorten():load({ id = "example_id" })
+local unshorten, err = client:Unshorten():load({ id = "example_id" })
 print(unshorten)
 ```
 
@@ -163,22 +163,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = UnshortenmeSDK.test()
-const result = await client.unshorten.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const unshorten = await client.Unshorten().load({ id: 'test01' })
+// unshorten is a bare Unshorten populated with mock data
+console.log(unshorten)
 ```
 
 ### Python
 
 ```python
 client = UnshortenmeSDK.test()
-result = client.unshorten.load({"id": "test01"})
+unshorten = client.Unshorten().load({"id": "test01"})
+print(unshorten)
 ```
 
 ### PHP
 
 ```php
-$client = UnshortenmeSDK::test();
-$result = $client->unshorten()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = UnshortenmeSDK::test([
+    "entity" => ["unshorten" => ["test01" => ["id" => "test01"]]],
+]);
+$unshorten = $client->Unshorten()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -193,15 +198,18 @@ result, err := client.Unshorten(nil).Load(
 ### Ruby
 
 ```ruby
-client = UnshortenmeSDK.test
-result = client.unshorten.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = UnshortenmeSDK.test({
+  "entity" => { "unshorten" => { "test01" => { "id" => "test01" } } },
+})
+unshorten = client.Unshorten.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:unshorten():load({ id = "test01" })
+local result, err = client:Unshorten():load({ id = "test01" })
 ```
 
 ## How it works
@@ -249,6 +257,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -34,8 +34,9 @@ client = UnshortenmeSDK.new({
 
 ```ruby
 begin
-  result = client.unshorten.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Unshorten record (raises on error).
+  unshorten = client.Unshorten.load({ "id" => "example_id" })
+  puts unshorten
 rescue => err
   warn "load failed: #{err}"
 end
@@ -82,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = UnshortenmeSDK.test
+client = UnshortenmeSDK.test({
+  "entity" => { "unshorten" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.unshorten.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+unshorten = client.Unshorten.load({ "id" => "test01" })
+puts unshorten
 ```
 
 ### Use a custom fetch function
@@ -166,7 +171,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Unshorten` | `(data) -> UnshortenEntity` | Create a Unshorten entity instance. |
+| `Unshorten` | `(data) -> UnshortenEntity` | Create an Unshorten entity instance. |
 
 ### Entity interface
 
@@ -224,7 +229,7 @@ API path: `/unshorten`
 
 ### Unshorten
 
-Create an instance: `const unshorten = client.unshorten`
+Create an instance: `unshorten = client.Unshorten`
 
 #### Operations
 
@@ -242,8 +247,9 @@ Create an instance: `const unshorten = client.unshorten`
 
 #### Example: Load
 
-```ts
-const unshorten = await client.unshorten.load({ id: 'unshorten_id' })
+```ruby
+# load returns the bare Unshorten record (raises on error).
+unshorten = client.Unshorten.load({ "id" => "unshorten_id" })
 ```
 
 
@@ -318,7 +324,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-unshorten = client.unshorten
+unshorten = client.Unshorten
 unshorten.load({ "id" => "example_id" })
 
 # unshorten.data_get now returns the loaded unshorten data

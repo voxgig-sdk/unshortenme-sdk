@@ -36,10 +36,12 @@ client = UnshortenmeSDK({
 
 ### 3. Load an unshorten
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.unshorten.load({"id": "example_id"})
-    print(result)
+    unshorten = client.Unshorten().load({"id": "example_id"})
+    print(unshorten)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -87,8 +89,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = UnshortenmeSDK.test()
 
-result = client.unshorten.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+unshorten = client.Unshorten().load({"id": "test01"})
+# unshorten contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -166,7 +169,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Unshorten` | `(data) -> UnshortenEntity` | Create a Unshorten entity instance. |
+| `Unshorten` | `(data) -> UnshortenEntity` | Create an Unshorten entity instance. |
 
 ### Entity interface
 
@@ -225,7 +228,7 @@ API path: `/unshorten`
 
 ### Unshorten
 
-Create an instance: `const unshorten = client.unshorten`
+Create an instance: `unshorten = client.Unshorten()`
 
 #### Operations
 
@@ -243,8 +246,8 @@ Create an instance: `const unshorten = client.unshorten`
 
 #### Example: Load
 
-```ts
-const unshorten = await client.unshorten.load({ id: 'unshorten_id' })
+```python
+unshorten = client.Unshorten().load({"id": "unshorten_id"})
 ```
 
 
@@ -318,7 +321,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-unshorten = client.unshorten
+unshorten = client.Unshorten()
 unshorten.load({"id": "example_id"})
 
 # unshorten.data_get() now returns the loaded unshorten data

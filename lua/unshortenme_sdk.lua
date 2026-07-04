@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:unshorten():list() / client:unshorten():load({ id = ... })
-function UnshortenmeSDK:unshorten(data)
+-- Idiomatic facade: client:Unshorten():list() / client:Unshorten():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function UnshortenmeSDK:Unshorten(data)
   local EntityMod = require("entity.unshorten_entity")
   if data == nil then
     if self._unshorten == nil then
@@ -253,12 +254,6 @@ function UnshortenmeSDK:unshorten(data)
     end
     return self._unshorten
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:unshorten() instead.
-function UnshortenmeSDK:Unshorten(data)
-  local EntityMod = require("entity.unshorten_entity")
   return EntityMod.new(self, data)
 end
 

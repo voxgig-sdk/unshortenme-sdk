@@ -204,14 +204,7 @@ class UnshortenmeSDK {
 
 
 
-  _unshorten?: UnshortenEntity
-
-  // Idiomatic facade: `client.unshorten.list()` / `client.unshorten.load({ id })`.
-  get unshorten(): UnshortenEntity {
-    return (this._unshorten ??= new UnshortenEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.unshorten` instead. */
+  // Entity access: `client.Unshorten().list()` / `client.Unshorten().load({ id })`.
   Unshorten(data?: any) {
     const self = this
     return new UnshortenEntity(self,data)

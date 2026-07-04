@@ -220,25 +220,15 @@ class UnshortenmeSDK:
         }
 
 
-    @property
-    def unshorten(self):
-        """Idiomatic facade: client.unshorten.list() / client.unshorten.load({"id": ...})."""
-        from entity.unshorten_entity import UnshortenEntity
-        cached = getattr(self, "_unshorten", None)
-        if cached is None:
-            cached = UnshortenEntity(self, None)
-            self._unshorten = cached
-        return cached
-
-    def Unshorten(self, data=None):
-        # Deprecated: use client.unshorten instead.
+    def Unshorten(self, data=None) -> "UnshortenEntity":
+        """Entity factory: client.Unshorten().list({}) / client.Unshorten().load({"id": ...})."""
         from entity.unshorten_entity import UnshortenEntity
         return UnshortenEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "UnshortenmeSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class UnshortenmeSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.unshorten_entity import UnshortenEntity

@@ -81,7 +81,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## UnshortenEntity
 
 ```python
-unshorten = client.unshorten
+unshorten = client.Unshorten()
 ```
 
 ### Fields
@@ -99,7 +99,7 @@ unshorten = client.unshorten
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.unshorten.load({"id": "unshorten_id"})
+result = client.Unshorten().load({"id": "unshorten_id"})
 ```
 
 ### Common Methods

@@ -35,9 +35,10 @@ $client = new UnshortenmeSDK([
 
 ```php
 try {
-    $result = $client->unshorten()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Unshorten record (throws on error).
+    $unshorten = $client->Unshorten()->load(["id" => "example_id"]);
+    print_r($unshorten);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -83,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = UnshortenmeSDK::test();
+$client = UnshortenmeSDK::test([
+    "entity" => ["unshorten" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->unshorten()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$unshorten = $client->Unshorten()->load(["id" => "test01"]);
+print_r($unshorten);
 ```
 
 ### Use a custom fetch function
@@ -170,7 +175,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Unshorten` | `($data): UnshortenEntity` | Create a Unshorten entity instance. |
+| `Unshorten` | `($data): UnshortenEntity` | Create an Unshorten entity instance. |
 
 ### Entity interface
 
@@ -229,7 +234,7 @@ API path: `/unshorten`
 
 ### Unshorten
 
-Create an instance: `const unshorten = client.unshorten`
+Create an instance: `$unshorten = $client->Unshorten();`
 
 #### Operations
 
@@ -247,8 +252,9 @@ Create an instance: `const unshorten = client.unshorten`
 
 #### Example: Load
 
-```ts
-const unshorten = await client.unshorten.load({ id: 'unshorten_id' })
+```php
+// load() returns the bare Unshorten record (throws on error).
+$unshorten = $client->Unshorten()->load(["id" => "unshorten_id"]);
 ```
 
 
@@ -323,7 +329,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$unshorten = $client->unshorten();
+$unshorten = $client->Unshorten();
 $unshorten->load(["id" => "example_id"]);
 
 // $unshorten->dataGet() now returns the loaded unshorten data

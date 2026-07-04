@@ -208,13 +208,7 @@ class UnshortenmeSDK
   end
 
 
-  # Idiomatic facade: client.unshorten.list / client.unshorten.load({ "id" => ... })
-  def unshorten
-    require_relative 'entity/unshorten_entity'
-    @unshorten ||= UnshortenEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.unshorten instead.
+  # Canonical facade: client.Unshorten.list / client.Unshorten.load({ "id" => ... })
   def Unshorten(data = nil)
     require_relative 'entity/unshorten_entity'
     UnshortenEntity.new(self, data)
