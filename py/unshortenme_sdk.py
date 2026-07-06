@@ -221,7 +221,7 @@ class UnshortenmeSDK:
 
 
     def Unshorten(self, data=None) -> "UnshortenEntity":
-        """Entity factory: client.Unshorten().list({}) / client.Unshorten().load({"id": ...})."""
+        """Entity factory: client.Unshorten().list() / client.Unshorten().load({"id": ...})."""
         from entity.unshorten_entity import UnshortenEntity
         return UnshortenEntity(self, data)
 

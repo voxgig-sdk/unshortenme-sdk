@@ -20,7 +20,7 @@ class Unshorten
     public string $unshortened_url;
 }
 
-/** Match filter for Unshorten#load (any subset of Unshorten fields). */
+/** Request payload for Unshorten#load. */
 class UnshortenLoadMatch
 {
     public ?string $shortened_url = null;

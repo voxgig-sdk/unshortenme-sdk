@@ -15,8 +15,7 @@ type Unshorten struct {
 	UnshortenedUrl string `json:"unshortened_url"`
 }
 
-// UnshortenLoadMatch mirrors the unshorten fields as an all-optional match
-// filter (Go analog of Partial<Unshorten>).
+// UnshortenLoadMatch is the typed request payload for Unshorten.LoadTyped.
 type UnshortenLoadMatch struct {
 	ShortenedUrl *string `json:"shortened_url,omitempty"`
 	Success *bool `json:"success,omitempty"`

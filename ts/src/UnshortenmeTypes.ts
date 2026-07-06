@@ -11,5 +11,9 @@ export interface Unshorten {
   unshortened_url: string
 }
 
-export type UnshortenLoadMatch = Partial<Unshorten>
+export interface UnshortenLoadMatch {
+  shortened_url?: string
+  success?: boolean
+  unshortened_url?: string
+}
 

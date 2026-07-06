@@ -117,9 +117,9 @@ const unshorten = client.Unshorten()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `shortened_url` | ``$STRING`` | Yes |  |
-| `success` | ``$BOOLEAN`` | Yes |  |
-| `unshortened_url` | ``$STRING`` | Yes |  |
+| `shortened_url` | `string` | Yes |  |
+| `success` | `boolean` | Yes |  |
+| `unshortened_url` | `string` | Yes |  |
 
 ### Operations
 
@@ -128,7 +128,7 @@ const unshorten = client.Unshorten()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Unshorten().load({ id: 'unshorten_id' })
+const result = await client.Unshorten().load()
 ```
 
 ### Common Methods

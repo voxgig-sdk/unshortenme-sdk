@@ -46,11 +46,11 @@ $client = UnshortenmeSDK::test();
 
 Create a new `UnshortenEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): UnshortenmeUtility`
 
 Return a copy of the SDK utility object.
 
@@ -93,9 +93,9 @@ $unshorten = $client->Unshorten();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `shortened_url` | ``$STRING`` | Yes |  |
-| `success` | ``$BOOLEAN`` | Yes |  |
-| `unshortened_url` | ``$STRING`` | Yes |  |
+| `shortened_url` | `string` | Yes |  |
+| `success` | `bool` | Yes |  |
+| `unshortened_url` | `string` | Yes |  |
 
 ### Operations
 
@@ -104,24 +104,24 @@ $unshorten = $client->Unshorten();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Unshorten()->load(["id" => "unshorten_id"]);
+$result = $client->Unshorten()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -130,7 +130,7 @@ Set the entity match criteria.
 Create a new `UnshortenEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

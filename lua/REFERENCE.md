@@ -91,9 +91,9 @@ local unshorten = client:Unshorten(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `shortened_url` | ``$STRING`` | Yes |  |
-| `success` | ``$BOOLEAN`` | Yes |  |
-| `unshortened_url` | ``$STRING`` | Yes |  |
+| `shortened_url` | `string` | Yes |  |
+| `success` | `boolean` | Yes |  |
+| `unshortened_url` | `string` | Yes |  |
 
 ### Operations
 
@@ -102,7 +102,7 @@ local unshorten = client:Unshorten(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Unshorten():load({ id = "unshorten_id" })
+local result, err = client:Unshorten():load()
 ```
 
 ### Common Methods

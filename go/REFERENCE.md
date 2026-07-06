@@ -98,9 +98,9 @@ unshorten := client.Unshorten(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `shortened_url` | ``$STRING`` | Yes |  |
-| `success` | ``$BOOLEAN`` | Yes |  |
-| `unshortened_url` | ``$STRING`` | Yes |  |
+| `shortened_url` | `string` | Yes |  |
+| `success` | `bool` | Yes |  |
+| `unshortened_url` | `string` | Yes |  |
 
 ### Operations
 
@@ -109,7 +109,7 @@ unshorten := client.Unshorten(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Unshorten(nil).Load(map[string]any{"id": "unshorten_id"}, nil)
+result, err := client.Unshorten(nil).Load(nil, nil)
 ```
 
 ### Common Methods

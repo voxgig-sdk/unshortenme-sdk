@@ -88,9 +88,9 @@ unshorten = client.Unshorten()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `shortened_url` | ``$STRING`` | Yes |  |
-| `success` | ``$BOOLEAN`` | Yes |  |
-| `unshortened_url` | ``$STRING`` | Yes |  |
+| `shortened_url` | `str` | Yes |  |
+| `success` | `bool` | Yes |  |
+| `unshortened_url` | `str` | Yes |  |
 
 ### Operations
 
@@ -99,7 +99,7 @@ unshorten = client.Unshorten()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Unshorten().load({"id": "unshorten_id"})
+result = client.Unshorten().load()
 ```
 
 ### Common Methods

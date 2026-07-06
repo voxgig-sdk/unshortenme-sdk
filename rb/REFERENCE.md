@@ -8,7 +8,7 @@ Complete API reference for the Unshortenme Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'unshortenme_sdk'
+require_relative 'Unshortenme_sdk'
 
 client = UnshortenmeSDK.new(options)
 ```
@@ -94,9 +94,9 @@ unshorten = client.Unshorten
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `shortened_url` | ``$STRING`` | Yes |  |
-| `success` | ``$BOOLEAN`` | Yes |  |
-| `unshortened_url` | ``$STRING`` | Yes |  |
+| `shortened_url` | `String` | Yes |  |
+| `success` | `Boolean` | Yes |  |
+| `unshortened_url` | `String` | Yes |  |
 
 ### Operations
 
@@ -105,7 +105,7 @@ unshorten = client.Unshorten
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Unshorten.load({ "id" => "unshorten_id" })
+result = client.Unshorten.load()
 ```
 
 ### Common Methods

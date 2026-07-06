@@ -25,7 +25,7 @@ Unshorten = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Unshorten#load (any subset of Unshorten fields).
+# Request payload for Unshorten#load.
 #
 # @!attribute [rw] shortened_url
 #   @return [String, nil]
