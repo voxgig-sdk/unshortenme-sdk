@@ -39,7 +39,7 @@ class Config {
     base: 'https://unshorten.me/api/v2',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {

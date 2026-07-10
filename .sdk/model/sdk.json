@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -221,15 +218,25 @@
           "email": "contact@unshorten.me"
         },
         "description": "Provides an easy method to unshorten a wide range of shortened URLs with rate limit and authorization header. Returns unshortened URL and success status.",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "header",
+          "name": "Authorization",
+          "prefix": "",
+          "scheme": "TokenAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server",
             "url": "https://unshorten.me/api/v2"
           }
         ],
+        "summary": "Provides an easy method to unshorten a wide range of shortened URLs with rate limit and authorization header.",
         "termsOfService": "https://unshorten.me/privacy-policy",
         "title": "Unshorten.me API",
-        "version": "2.0.0"
+        "version": "2.0.0",
+        "website": "https://unshorten.me/api"
       },
       "option": {},
       "target": {
@@ -282,6 +289,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -332,6 +342,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

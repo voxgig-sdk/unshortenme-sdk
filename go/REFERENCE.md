@@ -92,6 +92,7 @@ same parameters as `Direct()`.
 
 ```go
 unshorten := client.Unshorten(nil)
+fmt.Println(unshorten.GetName()) // "unshorten"
 ```
 
 ### Fields
@@ -110,6 +111,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Unshorten(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
