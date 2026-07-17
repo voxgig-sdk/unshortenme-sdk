@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Unshortenme SDK exists test
 
 local sdk = require("unshortenme_sdk")
 
