@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Unshortenme SDK exists test
 
 import pytest
 from unshortenme_sdk import UnshortenmeSDK

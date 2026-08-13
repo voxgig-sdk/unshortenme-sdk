@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 const client = UnshortenmeSDK.test()
 
 const unshorten = await client.Unshorten().load()
-// unshorten is a bare entity populated with mock response data
+// unshorten is the entity, populated with mock response data
+// — call unshorten.data() for the record itself
 console.log(unshorten)
 ```
 

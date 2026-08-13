@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = UnshortenmeSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = UnshortenmeSDK.test({
+  entity: {
+    unshorten: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const unshorten = await client.Unshorten().load()
-// unshorten is a bare Unshorten populated with mock data
+// unshorten is the Unshorten entity, populated with mock data
+// — call unshorten.data() for the record itself
 console.log(unshorten)
 ```
 
@@ -189,7 +198,7 @@ $client = new UnshortenmeSDK([
 ]);
 
 
-// Load a specific unshorten (returns the bare record; throws on error)
+// Load a specific unshorten (returns the ENTITY; call data_get() for the record; throws on error)
 $unshorten = $client->Unshorten()->load();
 print_r($unshorten);
 ```
@@ -221,7 +230,7 @@ client = UnshortenmeSDK.new({
 })
 
 
-# Load a specific unshorten (returns the bare record; raises on error)
+# Load a specific unshorten (returns the ENTITY; call data_get for the record)
 unshorten = client.Unshorten.load()
 puts unshorten
 ```
@@ -357,6 +366,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://unshorten.me/api/v2](https://unshorten.me/api/v2)
 

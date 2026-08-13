@@ -62,7 +62,7 @@ describe('UnshortenEntity', async () => {
     // LOAD
     const unshorten_ref01_ent = client.Unshorten()
     const unshorten_ref01_match_dt0: any = {}
-    const unshorten_ref01_data_dt0 = await unshorten_ref01_ent.load(unshorten_ref01_match_dt0)
+    const unshorten_ref01_data_dt0 = (await unshorten_ref01_ent.load(unshorten_ref01_match_dt0)).data()
     assert(null != unshorten_ref01_data_dt0)
 
 

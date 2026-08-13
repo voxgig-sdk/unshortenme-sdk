@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import UnshortenmeSDK
-from core.error import UnshortenmeError
-from core.result import UnshortenmeResult
-from core.response import UnshortenmeResponse
-from core.spec import UnshortenmeSpec
-from feature.base_feature import UnshortenmeBaseFeature
+from projectname_sdk.core.error import UnshortenmeError
+from projectname_sdk.core.result import UnshortenmeResult
+from projectname_sdk.core.response import UnshortenmeResponse
+from projectname_sdk.core.spec import UnshortenmeSpec
+from projectname_sdk.feature.base_feature import UnshortenmeBaseFeature
 
 
 def _client():

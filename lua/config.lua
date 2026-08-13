@@ -70,6 +70,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/unshorten",
                 ["parts"] = {

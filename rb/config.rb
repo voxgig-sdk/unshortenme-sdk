@@ -71,6 +71,7 @@ module UnshortenmeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/unshorten",
                   "parts" => [

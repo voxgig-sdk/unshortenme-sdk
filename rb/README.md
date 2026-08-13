@@ -36,7 +36,7 @@ client = UnshortenmeSDK.new({
 
 ```ruby
 begin
-  # load returns the bare Unshorten record (raises on error).
+  # load returns the ENTITY — call data_get for the Unshorten record (raises on error).
   unshorten = client.Unshorten.load()
   puts unshorten
 rescue => err
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = UnshortenmeSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 unshorten = client.Unshorten.load()
 puts unshorten
 ```
@@ -272,7 +273,7 @@ Create an instance: `unshorten = client.Unshorten`
 #### Example: Load
 
 ```ruby
-# load returns the bare Unshorten record (raises on error).
+# load returns the ENTITY — call data_get for the Unshorten record (raises on error).
 unshorten = client.Unshorten.load()
 ```
 
