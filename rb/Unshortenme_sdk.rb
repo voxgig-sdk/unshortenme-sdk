@@ -28,7 +28,7 @@ class UnshortenmeSDK
     utility = UnshortenmeUtility.new
     @_utility = utility
 
-    config = UnshortenmeConfig.make_config
+    config = UnshortenmeConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

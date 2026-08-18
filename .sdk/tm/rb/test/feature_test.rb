@@ -15,7 +15,7 @@ require_relative "../Unshortenme_sdk"
 module UnshortenmeFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = UnshortenmeConfig.make_config["feature"]
+    f = UnshortenmeConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://unshorten.me/api/v2',
+    base: "https://unshorten.me/api/v2",
 
     auth: {
       prefix: '',
@@ -59,25 +59,19 @@ class Config {
     "unshorten": {
       "fields": [
         {
-          "active": true,
           "name": "shortened_url",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "success",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "unshortened_url",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         }
       ],
       "name": "unshorten",
@@ -87,11 +81,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "https://bit.ly/3DKWm5t",
                     "kind": "query",
                     "name": "url",
@@ -115,11 +107,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

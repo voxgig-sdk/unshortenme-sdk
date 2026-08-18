@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from unshortenme_sdk.config import make_config
+from unshortenme_sdk.config import shared_config
 from unshortenme_sdk.features import _make_feature
 from unshortenme_sdk.core.control import UnshortenmeControl
 from unshortenme_sdk.core.error import UnshortenmeError
@@ -24,7 +24,7 @@ from unshortenme_sdk.core.spec import UnshortenmeSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

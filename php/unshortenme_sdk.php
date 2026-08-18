@@ -40,7 +40,7 @@ class UnshortenmeSDK
         $utility = new UnshortenmeUtility();
         $this->_utility = $utility;
 
-        $config = UnshortenmeConfig::make_config();
+        $config = UnshortenmeConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
