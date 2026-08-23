@@ -246,9 +246,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `shortened_url` |  |
-| `success` |  |
-| `unshortened_url` |  |
+| `shortened_url` | The original shortened URL that was provided |
+| `success` | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | The full unshortened URL |
 
 Operations: Load.
 
@@ -273,9 +273,9 @@ Create an instance: `unshorten = client.Unshorten()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `shortened_url` | `str` |  |
-| `success` | `bool` |  |
-| `unshortened_url` | `str` |  |
+| `shortened_url` | `str` | The original shortened URL that was provided |
+| `success` | `bool` | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | `str` | The full unshortened URL |
 
 #### Example: Load
 

@@ -94,9 +94,9 @@ unshorten = client.Unshorten
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `shortened_url` | `String` | Yes |  |
-| `success` | `Boolean` | Yes |  |
-| `unshortened_url` | `String` | Yes |  |
+| `shortened_url` | `String` | Yes | The original shortened URL that was provided |
+| `success` | `Boolean` | Yes | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | `String` | Yes | The full unshortened URL |
 
 ### Operations
 

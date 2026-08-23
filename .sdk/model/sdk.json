@@ -36,18 +36,21 @@
               "active": true,
               "name": "shortened_url",
               "req": true,
+              "short": "The original shortened URL that was provided",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "success",
               "req": true,
+              "short": "Indicates whether the unshortening operation was successful",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "unshortened_url",
               "req": true,
+              "short": "The full unshortened URL",
               "type": "`$STRING`"
             }
           ],

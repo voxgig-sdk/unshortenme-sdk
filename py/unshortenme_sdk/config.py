@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "Unshortenme",
+            "slug": "unshortenme",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -54,16 +57,19 @@ def make_config():
           {
             "name": "shortened_url",
             "req": True,
+            "short": "The original shortened URL that was provided",
             "type": "`$STRING`",
           },
           {
             "name": "success",
             "req": True,
+            "short": "Indicates whether the unshortening operation was successful",
             "type": "`$BOOLEAN`",
           },
           {
             "name": "unshortened_url",
             "req": True,
+            "short": "The full unshortened URL",
             "type": "`$STRING`",
           },
         ],

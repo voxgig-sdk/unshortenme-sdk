@@ -6,7 +6,7 @@ The Golang SDK for the Unshortenme API — an entity-oriented client using stand
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Unshorten(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -263,9 +263,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"shortened_url"` |  |
-| `"success"` |  |
-| `"unshortened_url"` |  |
+| `"shortened_url"` | The original shortened URL that was provided |
+| `"success"` | Indicates whether the unshortening operation was successful |
+| `"unshortened_url"` | The full unshortened URL |
 
 Operations: Load.
 
@@ -290,9 +290,9 @@ Create an instance: `unshorten := client.Unshorten(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `shortened_url` | `string` |  |
-| `success` | `bool` |  |
-| `unshortened_url` | `string` |  |
+| `shortened_url` | `string` | The original shortened URL that was provided |
+| `success` | `bool` | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | `string` | The full unshortened URL |
 
 #### Example: Load
 

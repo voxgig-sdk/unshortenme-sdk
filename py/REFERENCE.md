@@ -88,9 +88,9 @@ unshorten = client.Unshorten()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `shortened_url` | `str` | Yes |  |
-| `success` | `bool` | Yes |  |
-| `unshortened_url` | `str` | Yes |  |
+| `shortened_url` | `str` | Yes | The original shortened URL that was provided |
+| `success` | `bool` | Yes | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | `str` | Yes | The full unshortened URL |
 
 ### Operations
 

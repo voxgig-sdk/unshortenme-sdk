@@ -239,9 +239,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `shortened_url` |  |
-| `success` |  |
-| `unshortened_url` |  |
+| `shortened_url` | The original shortened URL that was provided |
+| `success` | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | The full unshortened URL |
 
 Operations: Load.
 
@@ -266,9 +266,9 @@ Create an instance: `unshorten = client.Unshorten`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `shortened_url` | `String` |  |
-| `success` | `Boolean` |  |
-| `unshortened_url` | `String` |  |
+| `shortened_url` | `String` | The original shortened URL that was provided |
+| `success` | `Boolean` | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | `String` | The full unshortened URL |
 
 #### Example: Load
 

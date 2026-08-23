@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Unshortenme",
+			"slug": "unshortenme",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -37,16 +40,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "shortened_url",
 						"req": true,
+						"short": "The original shortened URL that was provided",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "success",
 						"req": true,
+						"short": "Indicates whether the unshortening operation was successful",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "unshortened_url",
 						"req": true,
+						"short": "The full unshortened URL",
 						"type": "`$STRING`",
 					},
 				},

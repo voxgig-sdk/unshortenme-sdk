@@ -93,9 +93,9 @@ $unshorten = $client->Unshorten();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `shortened_url` | `string` | Yes |  |
-| `success` | `bool` | Yes |  |
-| `unshortened_url` | `string` | Yes |  |
+| `shortened_url` | `string` | Yes | The original shortened URL that was provided |
+| `success` | `bool` | Yes | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | `string` | Yes | The full unshortened URL |
 
 ### Operations
 

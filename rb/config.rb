@@ -19,6 +19,9 @@ module UnshortenmeConfig
     {
       "main" => {
         "name" => "Unshortenme",
+        "slug" => "unshortenme",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -45,16 +48,19 @@ module UnshortenmeConfig
             {
               "name" => "shortened_url",
               "req" => true,
+              "short" => "The original shortened URL that was provided",
               "type" => "`$STRING`",
             },
             {
               "name" => "success",
               "req" => true,
+              "short" => "Indicates whether the unshortening operation was successful",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "unshortened_url",
               "req" => true,
+              "short" => "The full unshortened URL",
               "type" => "`$STRING`",
             },
           ],

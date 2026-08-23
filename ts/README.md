@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -291,9 +291,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `shortened_url` |  |
-| `success` |  |
-| `unshortened_url` |  |
+| `shortened_url` | The original shortened URL that was provided |
+| `success` | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | The full unshortened URL |
 
 Operations: load.
 
@@ -318,9 +318,9 @@ Create an instance: `const unshorten = client.Unshorten()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `shortened_url` | `string` |  |
-| `success` | `boolean` |  |
-| `unshortened_url` | `string` |  |
+| `shortened_url` | `string` | The original shortened URL that was provided |
+| `success` | `boolean` | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | `string` | The full unshortened URL |
 
 #### Example: Load
 

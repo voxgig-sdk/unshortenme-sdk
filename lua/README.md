@@ -229,9 +229,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `shortened_url` |  |
-| `success` |  |
-| `unshortened_url` |  |
+| `shortened_url` | The original shortened URL that was provided |
+| `success` | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | The full unshortened URL |
 
 Operations: Load.
 
@@ -256,9 +256,9 @@ Create an instance: `local unshorten = client:Unshorten(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `shortened_url` | `string` |  |
-| `success` | `boolean` |  |
-| `unshortened_url` | `string` |  |
+| `shortened_url` | `string` | The original shortened URL that was provided |
+| `success` | `boolean` | Indicates whether the unshortening operation was successful |
+| `unshortened_url` | `string` | The full unshortened URL |
 
 #### Example: Load
 
