@@ -42,6 +42,7 @@ class UnshortenmeConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [

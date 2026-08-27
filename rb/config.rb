@@ -28,6 +28,7 @@ module UnshortenmeConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
