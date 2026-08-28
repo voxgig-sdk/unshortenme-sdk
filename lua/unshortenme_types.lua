@@ -12,9 +12,7 @@
 ---@field unshortened_url string
 
 ---@class UnshortenLoadMatch
----@field shortened_url? string
----@field success? boolean
----@field unshortened_url? string
+---@field url string
 
 local M = {}
 

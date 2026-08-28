@@ -12,8 +12,6 @@ export interface Unshorten {
 }
 
 export interface UnshortenLoadMatch {
-  shortened_url?: string
-  success?: boolean
-  unshortened_url?: string
+  url: string
 }
 

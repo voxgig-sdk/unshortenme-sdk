@@ -23,8 +23,6 @@ class Unshorten
 /** Request payload for Unshorten#load. */
 class UnshortenLoadMatch
 {
-    public ?string $shortened_url = null;
-    public ?bool $success = null;
-    public ?string $unshortened_url = null;
+    public string $url;
 }
 

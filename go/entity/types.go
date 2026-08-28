@@ -21,9 +21,7 @@ type Unshorten struct {
 
 // UnshortenLoadMatch is the typed request payload for Unshorten.LoadTyped.
 type UnshortenLoadMatch struct {
-	ShortenedUrl *string `json:"shortened_url,omitempty"`
-	Success *bool `json:"success,omitempty"`
-	UnshortenedUrl *string `json:"unshortened_url,omitempty"`
+	Url string `json:"url"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

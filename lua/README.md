@@ -38,7 +38,7 @@ local client = sdk.new({
 ### 3. Load an unshorten
 
 ```lua
-local unshorten, err = client:Unshorten():load()
+local unshorten, err = client:Unshorten():load({ url = "example_url" })
 if err then error(err) end
 print(unshorten)
 ```
@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local unshorten, err = client:Unshorten():load()
+local unshorten, err = client:Unshorten():load({ url = "example" })
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Unshorten():load()
+local result, err = client:Unshorten():load({ url = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -263,8 +263,31 @@ Create an instance: `local unshorten = client:Unshorten(nil)`
 #### Example: Load
 
 ```lua
-local unshorten, err = client:Unshorten():load()
+local unshorten, err = client:Unshorten():load({ url = "url" })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -344,7 +367,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local unshorten = client:Unshorten()
-unshorten:load()
+unshorten:load({ url = "example" })
 
 -- unshorten:data_get() now returns the unshorten data from the last load
 -- unshorten:match_get() returns the last match criteria

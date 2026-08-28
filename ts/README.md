@@ -41,7 +41,7 @@ const client = new UnshortenmeSDK({
 
 ```ts
 try {
-  const unshorten = await client.Unshorten().load()
+  const unshorten = await client.Unshorten().load({ url: 'example_url' })
   console.log(unshorten)
 } catch (err) {
   console.error('load failed:', err)
@@ -55,7 +55,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const unshorten = await client.Unshorten().load()
+  const unshorten = await client.Unshorten().load({ url: "example" })
   console.log(unshorten)
 } catch (err) {
   console.error('load failed:', err)
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = UnshortenmeSDK.test()
 
-const unshorten = await client.Unshorten().load()
+const unshorten = await client.Unshorten().load({ url: 'example_url' })
 // unshorten is the entity, populated with mock response data
 // — call unshorten.data() for the record itself
 console.log(unshorten)
@@ -143,7 +143,7 @@ Entity instances remember their last match and data:
 const entity = client.Unshorten()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ url: 'example_url' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -325,8 +325,31 @@ Create an instance: `const unshorten = client.Unshorten()`
 #### Example: Load
 
 ```ts
-const unshorten = await client.Unshorten().load()
+const unshorten = await client.Unshorten().load({ url: 'url' })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -399,7 +422,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const unshorten = client.Unshorten()
-await unshorten.load()
+await unshorten.load({ url: "example" })
 
 // unshorten.data() now returns the unshorten data from the last `load`
 // unshorten.match() returns the last match criteria

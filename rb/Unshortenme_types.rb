@@ -27,18 +27,10 @@ Unshorten = Struct.new(
 
 # Request payload for Unshorten#load.
 #
-# @!attribute [rw] shortened_url
-#   @return [String, nil]
-#
-# @!attribute [rw] success
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] unshortened_url
-#   @return [String, nil]
+# @!attribute [rw] url
+#   @return [String]
 UnshortenLoadMatch = Struct.new(
-  :shortened_url,
-  :success,
-  :unshortened_url,
+  :url,
   keyword_init: true
 )
 

@@ -22,7 +22,5 @@ class Unshorten(TypedDict):
     unshortened_url: str
 
 
-class UnshortenLoadMatch(TypedDict, total=False):
-    shortened_url: str
-    success: bool
-    unshortened_url: str
+class UnshortenLoadMatch(TypedDict):
+    url: str

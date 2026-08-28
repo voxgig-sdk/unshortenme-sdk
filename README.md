@@ -14,6 +14,10 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
+> **Features:** `test` — opt-in,
+> inactive until switched on, and configured per client. See the Features
+> section of any SDK README below for what each one does.
+
 ## Entities, not endpoints
 
 This SDK exposes the API as a small set of **semantic entities** — Unshorten — that you
@@ -23,7 +27,7 @@ support (`load`):
 
 ```ts
 const client = new UnshortenmeSDK()
-const unshorten = await client.Unshorten().load()
+const unshorten = await client.Unshorten().load({ url: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -47,7 +51,7 @@ const client = UnshortenmeSDK.test({
     },
   },
 })
-const unshorten = await client.Unshorten().load()
+const unshorten = await client.Unshorten().load({ url: 'example_url' })
 // unshorten is the Unshorten entity, populated with mock data
 // — call unshorten.data() for the record itself
 console.log(unshorten)
@@ -57,7 +61,7 @@ console.log(unshorten)
 
 ```python
 client = UnshortenmeSDK.test()
-unshorten = client.Unshorten().load()
+unshorten = client.Unshorten().load({"url": "example"})
 print(unshorten)
 ```
 
@@ -68,7 +72,7 @@ print(unshorten)
 $client = UnshortenmeSDK::test([
     "entity" => ["unshorten" => ["test01" => []]],
 ]);
-$unshorten = $client->Unshorten()->load();
+$unshorten = $client->Unshorten()->load(["url" => "example"]);
 ```
 
 ### Golang
@@ -87,14 +91,14 @@ result, err := client.Unshorten(nil).Load(
 client = UnshortenmeSDK.test({
   "entity" => { "unshorten" => { "test01" => {} } },
 })
-unshorten = client.Unshorten.load()
+unshorten = client.Unshorten.load({ "url" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Unshorten():load()
+local result, err = client:Unshorten():load({ url = "example" })
 ```
 
 ## Packages
@@ -183,7 +187,7 @@ client = UnshortenmeSDK({
 
 
 # Load a specific unshorten (returns the record, raises on error)
-unshorten = client.Unshorten().load()
+unshorten = client.Unshorten().load({"url": "example_url"})
 print(unshorten)
 ```
 
@@ -199,7 +203,7 @@ $client = new UnshortenmeSDK([
 
 
 // Load a specific unshorten (returns the ENTITY; call data_get() for the record; throws on error)
-$unshorten = $client->Unshorten()->load();
+$unshorten = $client->Unshorten()->load(["url" => "example_url"]);
 print_r($unshorten);
 ```
 
@@ -213,7 +217,7 @@ client := sdk.NewUnshortenmeSDK(map[string]any{
 })
 
 // Load unshorten data
-unshorten, err := client.Unshorten(nil).Load(nil, nil)
+unshorten, err := client.Unshorten(nil).Load(map[string]any{"url": "example_url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -231,7 +235,7 @@ client = UnshortenmeSDK.new({
 
 
 # Load a specific unshorten (returns the ENTITY; call data_get for the record)
-unshorten = client.Unshorten.load()
+unshorten = client.Unshorten.load({ "url" => "example_url" })
 puts unshorten
 ```
 
@@ -246,7 +250,7 @@ local client = sdk.new({
 
 
 -- Load a specific unshorten
-local unshorten, err = client:Unshorten():load()
+local unshorten, err = client:Unshorten():load({ url = "example_url" })
 print(unshorten)
 ```
 
@@ -352,6 +356,32 @@ forking the SDK.
 | **TestFeature** | In-memory mock transport for testing without a live server |
 
 Pass custom features via the `extend` option at construction time.
+
+## Customizing this SDK
+
+This repository contains its own generator (`.sdk/`), so the SDK is
+customizable without forking any upstream tool:
+
+- **The model** (`.sdk/model/`) declares everything this project owns:
+  package names, versions, active features, per-target settings. It is
+  written in [aontu](https://github.com/aontu-lang/aontu), a JSON-based
+  specification language designed for building ontologies: easy to edit
+  by hand, and files unify rather than override, so small declarations
+  compose into one model. Regeneration re-reads it every time.
+- **Templates** (`.sdk/tm/`) and **components** (`.sdk/src/cmp/`) are
+  the two layers of generation, copied into this repo: templates are the
+  literal per-language source, components generate the API-shaped parts.
+- **Regeneration merges.** By default, newly generated content is
+  three-way merged into existing files, so generator updates and local
+  edits usually converge without manual conflict handling. A project can
+  opt for plain overwrite instead.
+- **Custom features and entire custom targets** arrive through sdkgen
+  packages (`voxgig-sdkgen package add`), on the same rails as the
+  bundled languages, and `voxgig-sdkgen doctor` reports any drift from
+  what a resync would write.
+
+How-to: [customize and propagate templates](https://github.com/voxgig/sdkgen/blob/main/docs/how-to/customize-and-propagate-templates.md).
+The full story: [voxgig.com/sdk/custom](https://voxgig.com/sdk/custom).
 
 ## Per-language documentation
 

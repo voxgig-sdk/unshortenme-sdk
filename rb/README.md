@@ -37,7 +37,7 @@ client = UnshortenmeSDK.new({
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the Unshorten record (raises on error).
-  unshorten = client.Unshorten.load()
+  unshorten = client.Unshorten.load({ "url" => "example_url" })
   puts unshorten
 rescue => err
   warn "load failed: #{err}"
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  unshorten = client.Unshorten.load()
+  unshorten = client.Unshorten.load({ "url" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -121,7 +121,7 @@ client = UnshortenmeSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-unshorten = client.Unshorten.load()
+unshorten = client.Unshorten.load({ "url" => "example" })
 puts unshorten
 ```
 
@@ -274,8 +274,31 @@ Create an instance: `unshorten = client.Unshorten`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Unshorten record (raises on error).
-unshorten = client.Unshorten.load()
+unshorten = client.Unshorten.load({ "url" => "url" })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -355,7 +378,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 unshorten = client.Unshorten
-unshorten.load()
+unshorten.load({ "url" => "example" })
 
 # unshorten.data_get now returns the unshorten data from the last load
 # unshorten.match_get returns the last match criteria
