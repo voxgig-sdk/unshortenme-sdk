@@ -67,15 +67,17 @@ def unshorten_direct_setup(mockres)
   env = Runner.env_override({
     "UNSHORTENME_TEST_UNSHORTEN_ENTID" => {},
     "UNSHORTENME_TEST_LIVE" => "FALSE",
-    "UNSHORTENME_APIKEY" => "NONE",
+    "UNSHORTENME_APIKEY" => "",
   })
 
   live = env["UNSHORTENME_TEST_LIVE"] == "TRUE"
 
   if live
-    merged_opts = {
+    # Merged so the generated fields win: sdk-test-control.json's
+    # test.client.options adds to the live client, it does not redirect it.
+    merged_opts = Runner.live_client_options.merge({
       "apikey" => env["UNSHORTENME_APIKEY"],
-    }
+    })
     client = UnshortenmeSDK.new(merged_opts)
     return {
       client: client,

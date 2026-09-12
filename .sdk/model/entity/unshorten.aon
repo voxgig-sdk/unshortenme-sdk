@@ -6,6 +6,7 @@ main: kit: entity: unshorten: {
 
   fields: [
     {
+      format: "uri"
       name: "shortened_url"
       req: true
       short: "The original shortened URL that was provided"
@@ -18,6 +19,7 @@ main: kit: entity: unshorten: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "uri"
       name: "unshortened_url"
       req: true
       short: "The full unshortened URL"
@@ -45,8 +47,10 @@ main: kit: entity: unshorten: {
           }
           method: "GET"
           orig: "/unshorten"
-          parts: [
-            "unshorten"
+          segments: [
+            {
+              lit: "unshorten"
+            }
           ]
           select: {
             exist: [

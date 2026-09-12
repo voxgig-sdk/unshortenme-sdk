@@ -61,6 +61,7 @@ class UnshortenmeConfig
         'unshorten' => [
           'fields' => [
             [
+              'format' => 'uri',
               'name' => 'shortened_url',
               'req' => true,
               'short' => 'The original shortened URL that was provided',
@@ -73,6 +74,7 @@ class UnshortenmeConfig
               'type' => '`$BOOLEAN`',
             ],
             [
+              'format' => 'uri',
               'name' => 'unshortened_url',
               'req' => true,
               'short' => 'The full unshortened URL',
@@ -101,8 +103,10 @@ class UnshortenmeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/unshorten',
-                  'parts' => [
-                    'unshorten',
+                  'segments' => [
+                    [
+                      'lit' => 'unshorten',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -112,6 +116,9 @@ class UnshortenmeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'unshorten',
                   ],
                 ],
               ],

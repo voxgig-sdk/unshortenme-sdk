@@ -35,6 +35,7 @@ local function make_config()
       ["unshorten"] = {
         ["fields"] = {
           {
+            ["format"] = "uri",
             ["name"] = "shortened_url",
             ["req"] = true,
             ["short"] = "The original shortened URL that was provided",
@@ -47,6 +48,7 @@ local function make_config()
             ["type"] = "`$BOOLEAN`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "unshortened_url",
             ["req"] = true,
             ["short"] = "The full unshortened URL",
@@ -75,8 +77,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/unshorten",
-                ["parts"] = {
-                  "unshorten",
+                ["segments"] = {
+                  {
+                    ["lit"] = "unshorten",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -86,6 +90,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "unshorten",
                 },
               },
             },

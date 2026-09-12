@@ -47,6 +47,7 @@ module UnshortenmeConfig
         "unshorten" => {
           "fields" => [
             {
+              "format" => "uri",
               "name" => "shortened_url",
               "req" => true,
               "short" => "The original shortened URL that was provided",
@@ -59,6 +60,7 @@ module UnshortenmeConfig
               "type" => "`$BOOLEAN`",
             },
             {
+              "format" => "uri",
               "name" => "unshortened_url",
               "req" => true,
               "short" => "The full unshortened URL",
@@ -87,8 +89,10 @@ module UnshortenmeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/unshorten",
-                  "parts" => [
-                    "unshorten",
+                  "segments" => [
+                    {
+                      "lit" => "unshorten",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -99,6 +103,9 @@ module UnshortenmeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "unshorten",
+                  ],
                 },
               ],
             },
