@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { UnshortenmeSDK } from '@voxgig-sdk/unshortenme'
+import { UnshortenmeSDK } from '@voxgig-sdk/unshortenme-sdk'
 
 const client = new UnshortenmeSDK({
   apikey: process.env.UNSHORTENME_APIKEY,
@@ -411,7 +411,7 @@ unshortenme/
 Import the SDK from the package root:
 
 ```ts
-import { UnshortenmeSDK } from '@voxgig-sdk/unshortenme'
+import { UnshortenmeSDK } from '@voxgig-sdk/unshortenme-sdk'
 ```
 
 ### Entity state

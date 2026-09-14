@@ -105,7 +105,7 @@ local result, err = client:Unshorten():load({ url = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/releases) |
+| TypeScript | `@voxgig-sdk/unshortenme-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/releases) |
 | Python | `voxgig-sdk-unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/releases) |
 | PHP | `voxgig-sdk/unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/unshortenme-sdk/go` | `go get github.com/voxgig-sdk/unshortenme-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Unshorten():load({ url = "example" })
 ### TypeScript
 
 ```ts
-import { UnshortenmeSDK } from '@voxgig-sdk/unshortenme'
+import { UnshortenmeSDK } from '@voxgig-sdk/unshortenme-sdk'
 
 const client = new UnshortenmeSDK({
   apikey: process.env.UNSHORTENME_APIKEY,
