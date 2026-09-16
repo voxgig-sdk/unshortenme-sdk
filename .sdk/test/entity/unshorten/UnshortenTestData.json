@@ -29,5 +29,167 @@
         "unshortened_url": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /unshorten": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "unshortenUrl",
+        "parameters": [
+          {
+            "description": "The shortened URL to be unshortened",
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "example": "https://bit.ly/3DKWm5t",
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "successfulUnshorten": {
+                    "summary": "Successful unshorten response",
+                    "value": {
+                      "shortened_url": "https://bit.ly/3DKWm5t",
+                      "success": true,
+                      "unshortened_url": "https://www.youtube.com/"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "shortened_url": {
+                      "description": "The original shortened URL that was provided",
+                      "example": "https://bit.ly/3DKWm5t",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "success": {
+                      "description": "Indicates whether the unshortening operation was successful",
+                      "example": true,
+                      "type": "boolean"
+                    },
+                    "unshortened_url": {
+                      "description": "The full unshortened URL",
+                      "example": "https://www.youtube.com/",
+                      "format": "uri",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "unshortened_url",
+                    "shortened_url",
+                    "success"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successfully unshortened the URL"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid URL parameter",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - invalid URL parameter"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid or missing authorization token",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unauthorized - invalid or missing authorization token"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Rate limit exceeded. Please upgrade your subscription or contact us.",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "An error occurred while processing your request",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "TokenAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "TokenAuth": {
+            "description": "Token-based authentication. Use the format: 'Token {your_token}' where the token can be found in your profile page.",
+            "in": "header",
+            "name": "Authorization",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
   }
 }

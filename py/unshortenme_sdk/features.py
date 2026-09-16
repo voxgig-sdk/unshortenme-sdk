@@ -1,12 +1,18 @@
 # Unshortenme SDK feature factory
 
 from unshortenme_sdk.feature.base_feature import UnshortenmeBaseFeature
+from unshortenme_sdk.feature.ratelimit_feature import UnshortenmeRatelimitFeature
+from unshortenme_sdk.feature.retry_feature import UnshortenmeRetryFeature
 from unshortenme_sdk.feature.test_feature import UnshortenmeTestFeature
+from unshortenme_sdk.feature.timeout_feature import UnshortenmeTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: UnshortenmeBaseFeature(),
+    "ratelimit": lambda: UnshortenmeRatelimitFeature(),
+    "retry": lambda: UnshortenmeRetryFeature(),
     "test": lambda: UnshortenmeTestFeature(),
+    "timeout": lambda: UnshortenmeTimeoutFeature(),
 }
 
 

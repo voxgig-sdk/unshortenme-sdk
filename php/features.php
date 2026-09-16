@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Unshortenme SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class UnshortenmeFeatures
@@ -14,8 +17,14 @@ class UnshortenmeFeatures
         switch ($name) {
             case "base":
                 return new UnshortenmeBaseFeature();
+            case "ratelimit":
+                return new UnshortenmeRatelimitFeature();
+            case "retry":
+                return new UnshortenmeRetryFeature();
             case "test":
                 return new UnshortenmeTestFeature();
+            case "timeout":
+                return new UnshortenmeTimeoutFeature();
             default:
                 return new UnshortenmeBaseFeature();
         }
@@ -31,7 +40,10 @@ class UnshortenmeFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
