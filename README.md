@@ -105,12 +105,12 @@ local result, err = client:Unshorten():load({ url = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/unshortenme-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/releases) |
-| Python | `voxgig-sdk-unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/releases) |
-| PHP | `voxgig-sdk/unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/releases) |
+| TypeScript | `@voxgig-sdk/unshortenme-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/tags) |
+| Python | `voxgig-sdk-unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/tags) |
+| PHP | `voxgig-sdk/unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/unshortenme-sdk/go` | `go get github.com/voxgig-sdk/unshortenme-sdk/go@latest` |
-| Ruby | `voxgig-sdk-unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/releases) |
-| Lua | `voxgig-sdk-unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/releases) |
+| Ruby | `voxgig-sdk-unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/tags) |
+| Lua | `voxgig-sdk-unshortenme` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unshortenme-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/unshortenme-sdk/go-cli` | `go install github.com/voxgig-sdk/unshortenme-sdk/go-cli/cmd/unshortenme@latest` |
 | Go MCP server | `github.com/voxgig-sdk/unshortenme-sdk/go-mcp` | `go get github.com/voxgig-sdk/unshortenme-sdk/go-mcp@latest` |
 
